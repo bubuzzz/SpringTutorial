@@ -1,6 +1,0 @@
-com\fpt\springtraining\logic\service\IGroupService.class
-com\fpt\springtraining\logic\serviceimpl\GroupServiceImpl.class
-com\fpt\springtraining\logic\serviceimpl\UserServiceImpl.class
-com\fpt\springtraining\logic\aspects\AuthenticationAspect.class
-com\fpt\springtraining\logic\service\IUserService.class
-com\fpt\springtraining\logic\aspects\SessionLookUp.class
