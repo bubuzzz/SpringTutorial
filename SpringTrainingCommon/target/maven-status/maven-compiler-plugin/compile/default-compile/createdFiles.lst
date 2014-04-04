@@ -1,0 +1,13 @@
+com\fpt\springtraining\config\AppInitializer.class
+com\fpt\springtraining\config\DatabaseConfig.class
+com\fpt\springtraining\constants\GroupType.class
+com\fpt\springtraining\exceptions\FailAuthenticationException.class
+com\fpt\springtraining\utils\CommonUtils.class
+com\fpt\springtraining\config\Routes$IUser.class
+com\fpt\springtraining\dto\UserRegistration.class
+com\fpt\springtraining\config\Routes.class
+com\fpt\springtraining\dto\UserLogin.class
+com\fpt\springtraining\exceptions\DuplicateObjectException.class
+com\fpt\springtraining\config\Routes$IGroup.class
+com\fpt\springtraining\constants\RightType.class
+com\fpt\springtraining\config\AppConfig.class

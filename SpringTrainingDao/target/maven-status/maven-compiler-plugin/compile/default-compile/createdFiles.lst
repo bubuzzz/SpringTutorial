@@ -1,0 +1,11 @@
+com\fpt\springtraining\data\dao\IGenericDAO.class
+com\fpt\springtraining\data\entities\AssGroup.class
+com\fpt\springtraining\data\daoimpl\GenericDAOImpl.class
+com\fpt\springtraining\data\entities\AssUser.class
+com\fpt\springtraining\data\daoimpl\UserDAOImpl.class
+com\fpt\springtraining\data\dao\IGroupDAO.class
+com\fpt\springtraining\data\daoimpl\RightDAOImpl.class
+com\fpt\springtraining\data\dao\IUserDAO.class
+com\fpt\springtraining\data\dao\IRightDAO.class
+com\fpt\springtraining\data\entities\AssRight.class
+com\fpt\springtraining\data\daoimpl\GroupDAOImpl.class

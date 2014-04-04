@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="SpringTrainingCommon"
+  id="myeclipse.1395629865415"
+  context-root="/springtraining"
+  j2ee-spec="6.0"
+  archive="SpringTrainingCommon.war">
+  <attributes>
+    <attribute name="webrootdir" value="src/main/webapp" />
+  </attributes>
+</project-module>
+
