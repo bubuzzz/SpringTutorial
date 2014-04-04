@@ -1,4 +1,0 @@
-SpringTutorial
-==============
-
-SpringTutorial
