@@ -1,0 +1,23 @@
+<ons-navigator title="User"
+  left-button-icon="fa fa-lg fa-bars"
+  on-left-button-click="ons.slidingMenu.toggleMenu()">
+  <ons-page ng-controller="userController">
+    <ons-text-input 
+      ng-model="text"
+      placeholder="Search User" 
+      style="display: block; width: 100%">
+    </ons-text-input>
+
+    <ons-button 
+      type="cta-large" 
+      style="display: block; width: 100%; margin-top: 8px;">
+      Search
+    </ons-button>
+
+    <div class="topcoat-list__container">
+      <ul class="topcoat-list userList" >
+      </ul>
+    </div>
+
+  </ons-page>
+</ons-navigator>
