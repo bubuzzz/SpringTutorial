@@ -6,10 +6,11 @@
     <version>0.0.1</version>
   </parent>
   <artifactId>SpringTrainingController</artifactId>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
   
   <dependencies>
-  	<dependency>
+  
+  <dependency>
 		<groupId>com.fpt</groupId>
 		<artifactId>SpringTrainingCommon</artifactId>
 		<version>0.0.1</version>
@@ -19,7 +20,7 @@
 		<groupId>com.fpt</groupId>
 		<artifactId>SpringTrainingDao</artifactId>
 		<version>0.0.1</version>
-	</dependency>
+	</dependency> 
 	
 	<dependency>
 		<groupId>com.fpt</groupId>

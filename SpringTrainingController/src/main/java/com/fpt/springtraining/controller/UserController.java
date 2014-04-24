@@ -126,7 +126,7 @@ public class UserController {
 	@RequestMapping(value = Routes.IUser.LIST_USER, method = RequestMethod.GET)
 	@ResponseBody
 	@SessionLookUp
-	@ExceptionHandler(FailAuthenticationException.class)
+	// @ExceptionHandler(FailAuthenticationException.class)
 	public List<AssUser> displayUsers(HttpSession session, String groupType) {
 		return m_userService.displayUsers(groupType);
 	}

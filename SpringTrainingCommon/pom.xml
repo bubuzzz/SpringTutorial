@@ -6,15 +6,28 @@
 		<groupId>com.fpt</groupId>
 		<version>0.0.1</version>
 	</parent>
+	
 	<artifactId>SpringTrainingCommon</artifactId>
 	<packaging>jar</packaging>
+	
 	<name>SpringTrainingCommon</name>
 
 	<build>
+	  <resources>
+      <resource>
+        <targetPath>com/fpt/springtraining/config/</targetPath>
+        <directory>src/main/java/com/fpt/springtraining/config/</directory>
+        <includes>
+          <include>**/*.properties</include>
+        </includes>
+      </resource>
+    </resources>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
+				  
+			    
 					<outxml>true</outxml>
 			        <verbose>true</verbose>
 			        <showWeaveInfo>true</showWeaveInfo>
@@ -31,6 +44,6 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+
  	
 </project>

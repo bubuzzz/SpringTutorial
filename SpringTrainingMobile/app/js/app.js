@@ -1,8 +1,4 @@
 $.noConflict();
-jQuery( document ).ready(function( $ ) {
-  initUser();
-});
-
 
 // trigger functions // 
 function initUser () {
@@ -27,6 +23,10 @@ function initGroup () {
       "</li>"
     );
   }
+
+  jquery.get({
+
+  });
 }
 
 function searchGroup () {
@@ -50,8 +50,21 @@ myApp.controller("userController", function ($scope, $rootScope) {
 });
 
 myApp.controller("groupController", function ($scope, $rootScope) {
-  initGroup();
+  
 });
 
+myApp.directive('groupInit', function() {
+    return function($scope, $element, $attrs) {                
+        $scope.$watch('ul.groupList', function(value){
+            initGroup();
+        });                
+    }
+});
 
-
+myApp.directive('userInit', function() {
+    return function($scope, $element, $attrs) {                
+        $scope.$watch('ul.userList', function(value){
+            initUser();
+        });                
+    }
+});
