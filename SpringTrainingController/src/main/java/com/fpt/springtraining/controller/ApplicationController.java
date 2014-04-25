@@ -30,8 +30,6 @@ public class ApplicationController {
 		return "Hello";
 	}
 	
-	
-	
 	@RequestMapping(value = "/hello", method = RequestMethod.GET)
 	@ResponseBody
 	protected ModelAndView sayHello(HttpServletRequest request,

@@ -20,6 +20,7 @@ import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
+import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -38,7 +39,7 @@ import com.fpt.springtraining.logic.serviceimpl.UserServiceImpl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-// @TransactionConfiguration(transactionManager="transactionManager", defaultRollback=false)
+@TransactionConfiguration(transactionManager="transactionManager", defaultRollback=false)
 @Transactional
 @ContextConfiguration(classes = {
 	AppConfig.class,
@@ -65,6 +66,94 @@ public class TestUserController {
     @Before
     public void setUp() {                    
     	 mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();	
+    }
+    
+    @Test
+    public void testDisplayDevsThroughRest() throws Exception {
+    	// create pm
+    	mockMvc.perform(
+			post(
+				Routes.IUser.ADD_USER
+			).param(
+				"username", "A"
+			).param(
+				"password", "A" 
+			).param(
+				"agreed", "true"
+			).param(
+				"groupName", "man1"
+			).param(
+				"role", GroupType.MANAGER.getValue()
+			)
+		).andExpect(
+			status().isOk()
+		).andExpect(
+			view().name("User is created successfully")
+		);
+    	
+    	// create DEV
+    	mockMvc.perform(
+			post(
+				Routes.IUser.ADD_USER
+			).param(
+				"username", "B"
+			).param(
+				"password", "A" 
+			).param(
+				"agreed", "true"
+			).param(
+				"groupName", "dev1"
+			).param(
+				"role", GroupType.DEVELOPER.getValue()
+			)
+		).andExpect(
+			status().isOk()
+		).andExpect(
+			view().name("User is created successfully")
+		);
+    	
+    	// create DEV
+    	mockMvc.perform(
+			post(
+				Routes.IUser.ADD_USER
+			).param(
+				"username", "C"
+			).param(
+				"password", "A" 
+			).param(
+				"agreed", "true"
+			).param(
+				"groupName", "dev1"
+			).param(
+				"role", GroupType.DEVELOPER.getValue()
+			)
+		).andExpect(
+			status().isOk()
+		).andExpect(
+			view().name("User is created successfully")
+		);
+    	
+    	// display devs
+    	mockMvc.perform(
+			post(
+				Routes.IUser.LIST_DEVS_SERVICE
+			).param(
+				"username", "A"
+			).param(
+				"password", "A"
+			).accept(
+				MediaType.APPLICATION_JSON)
+		).andDo(
+			print()
+		).andExpect(
+			status().isOk()
+		)
+		.andExpect(
+			content().contentType("application/json;charset=UTF-8")
+		).andExpect(
+			jsonPath("$", Matchers.hasSize(2))
+		)
+		;
     }
     
     @Test

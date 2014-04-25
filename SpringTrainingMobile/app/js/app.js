@@ -24,8 +24,24 @@ function initGroup () {
     );
   }
 
-  jquery.get({
+  $.post( 
+      "http://localhost:8080/SpringTrainingController-0.0.1/user/list", 
+      {username: "bubuzzz", password: "12345678"}
+      
+    ).done(function( data ) {
+      alert( "Data Loaded: " + data );
+    }
+  );
 
+  jQuery.get("http://localhost:8080/SpringTrainingController-0.0.1/hello/toJson", function(data) {
+    console.log("get something");
+    console.log(data);
+  }).done(function() {
+    alert( "second success" );
+  }).fail(function() {
+    alert( "error" );
+  }).always(function() {
+    alert( "finished" );
   });
 }
 

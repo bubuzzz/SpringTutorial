@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.usertype.UserType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -21,6 +22,7 @@ import com.fpt.springtraining.dto.UserLogin;
 import com.fpt.springtraining.dto.UserRegistration;
 import com.fpt.springtraining.exceptions.DuplicateObjectException;
 import com.fpt.springtraining.exceptions.FailAuthenticationException;
+import com.fpt.springtraining.logic.aspects.LoginLookup;
 import com.fpt.springtraining.logic.aspects.SessionLookUp;
 import com.fpt.springtraining.logic.service.IGroupService;
 import com.fpt.springtraining.logic.service.IUserService;
@@ -232,5 +234,19 @@ public class UserController {
 			e.printStackTrace();
 			return e.getMessage();
 		}
+	}
+	
+	
+	/**
+	 * (List all DEVs managed by a login PM)
+	 * 
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value = Routes.IUser.LIST_DEVS_SERVICE, method = RequestMethod.POST)
+	@ResponseBody
+	@LoginLookup
+	public List<AssUser> displayDevsThroughRest(HttpSession session) {
+		return m_userService.displayUsers(GroupType.DEVELOPER.getValue());
 	}
 }

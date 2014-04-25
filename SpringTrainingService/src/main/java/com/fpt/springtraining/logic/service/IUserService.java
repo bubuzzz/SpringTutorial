@@ -16,7 +16,6 @@ import com.fpt.springtraining.exceptions.FailAuthenticationException;
  * @author ThaiTC
  *
  */
-@Service
 public interface IUserService {
 	
 	/**

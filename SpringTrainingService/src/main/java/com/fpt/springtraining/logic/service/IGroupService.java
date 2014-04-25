@@ -15,7 +15,7 @@ import com.fpt.springtraining.exceptions.DuplicateObjectException;
  * @author ThaiTC
  *
  */
-@Service
+
 public interface IGroupService {
 	
 	/**

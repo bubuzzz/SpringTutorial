@@ -19,6 +19,7 @@ public class Routes {
 		
 		public static final String LIST_USER 				= "/user/list";
 		public static final String LIST_DEVS 				= "/user/devs";
+		public static final String LIST_DEVS_SERVICE		= "/user/devs/service";
 		
 		public static final String ASSIGN_DEVS_TO_PM		= "/user/assign";
 		public static final String ASSIGN_DEVS_TO_GROUP		= "/user/assign/group";

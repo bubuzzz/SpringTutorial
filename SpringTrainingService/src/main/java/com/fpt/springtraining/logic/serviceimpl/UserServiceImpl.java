@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.fpt.springtraining.constants.GroupType;
@@ -20,6 +21,7 @@ import com.fpt.springtraining.exceptions.FailAuthenticationException;
 import com.fpt.springtraining.logic.service.IUserService;
 
 @Transactional
+@Service
 public class UserServiceImpl implements IUserService {
 
 	@Autowired
