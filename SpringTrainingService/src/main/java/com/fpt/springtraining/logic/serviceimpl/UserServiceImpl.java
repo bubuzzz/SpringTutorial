@@ -51,9 +51,14 @@ public class UserServiceImpl implements IUserService {
 					group = new AssGroup();
 					group.setName(role[0]);
 					group.setType(role[1]);
-					group.setUsers(users);
-					m_groupDAO.save(group);
 				}
+				
+				if (group.getUsers() != null) {
+					users.addAll(group.getUsers());
+				}
+				
+				group.setUsers(users);
+				m_groupDAO.update(group);
 			}
 		
 			return user.getId();

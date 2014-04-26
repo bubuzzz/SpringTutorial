@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fpt.springtraining.config.Routes;
@@ -118,20 +119,7 @@ public class UserController {
 		return null;
 	}
 
-	/**
-	 * (List all DEV and List all PMs) This will list users based on the type. If type is null, then all users will be returned
-	 * 
-	 * @param session
-	 * @param groupType
-	 * @return
-	 */
-	@RequestMapping(value = Routes.IUser.LIST_USER, method = RequestMethod.GET)
-	@ResponseBody
-	@SessionLookUp
-	// @ExceptionHandler(FailAuthenticationException.class)
-	public List<AssUser> displayUsers(HttpSession session, String groupType) {
-		return m_userService.displayUsers(groupType);
-	}
+	
 
 	/**
 	 * (List all DEVs managed by a login PM)
@@ -246,7 +234,25 @@ public class UserController {
 	@RequestMapping(value = Routes.IUser.LIST_DEVS_SERVICE, method = RequestMethod.POST)
 	@ResponseBody
 	@LoginLookup
-	public List<AssUser> displayDevsThroughRest(HttpSession session) {
-		return m_userService.displayUsers(GroupType.DEVELOPER.getValue());
+	public List<AssUser> displayDevsThroughRest(
+			@RequestParam String username, 
+			@RequestParam String password, 
+			@RequestParam String groupType
+	) {
+		return m_userService.displayUsers(groupType);
+	}
+	
+	/**
+	 * (List all DEV and List all PMs) This will list users based on the type. If type is null, then all users will be returned
+	 * 
+	 * @param session
+	 * @param groupType
+	 * @return
+	 */
+	@RequestMapping(value = Routes.IUser.LIST_USER, method = RequestMethod.GET)
+	@ResponseBody
+	@SessionLookUp
+	public List<AssUser> displayUsers(HttpSession session, String groupType) {
+		return m_userService.displayUsers(groupType);
 	}
 }

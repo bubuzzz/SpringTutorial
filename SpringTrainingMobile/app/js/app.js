@@ -24,26 +24,32 @@ function initGroup () {
     );
   }
 
-  $.post( 
-      "http://localhost:8080/SpringTrainingController-0.0.1/user/list", 
-      {username: "bubuzzz", password: "12345678"}
-      
-    ).done(function( data ) {
-      alert( "Data Loaded: " + data );
+  jQuery.ajax({
+    type: "GET",
+    // url: "http://localhost:8080/SpringTrainingController/user/devs/service",
+    // data: "username=bubuzzz&password=12345678&groupType=DEVELOPER",
+    // url : "http://localhost:8080/SpringTrainingController/hello",
+    url : 'http://localhost:8080/SpringTrainingController/hello/toJson', 
+    success: function(response){
+        console.log(response);
+    },
+    error: function(msg){
+      console.log("ERROR! \n" + JSON.stringify(msg));
     }
-  );
-
-  jQuery.get("http://localhost:8080/SpringTrainingController-0.0.1/hello/toJson", function(data) {
-    console.log("get something");
-    console.log(data);
-  }).done(function() {
-    alert( "second success" );
-  }).fail(function() {
-    alert( "error" );
-  }).always(function() {
-    alert( "finished" );
   });
+
 }
+
+jQuery(document).ready(function(){
+  initGroup();
+
+   // $.ajax({
+   //      url: "http://rest-service.guides.spring.io/greeting"
+   //  }).then(function(data) {
+   //     $('.greeting-id').append(data.id);
+   //     $('.greeting-content').append(data.content);
+   //  });
+});
 
 function searchGroup () {
 
@@ -69,13 +75,13 @@ myApp.controller("groupController", function ($scope, $rootScope) {
   
 });
 
-myApp.directive('groupInit', function() {
-    return function($scope, $element, $attrs) {                
-        $scope.$watch('ul.groupList', function(value){
-            initGroup();
-        });                
-    }
-});
+// myApp.directive('groupInit', function() {
+//     return function($scope, $element, $attrs) {                
+//         $scope.$watch('ul.groupList', function(value){
+//             initGroup();
+//         });                
+//     }
+// });
 
 myApp.directive('userInit', function() {
     return function($scope, $element, $attrs) {                

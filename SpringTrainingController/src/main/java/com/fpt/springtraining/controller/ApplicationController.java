@@ -20,24 +20,18 @@ public class ApplicationController {
 	
 	/**
 	 * Return the hello string with the root web context
-	 * 
+	 * 	
 	 * @return
 	 */
-	@RequestMapping(value = "/hello/toJson", method = RequestMethod.GET)
+	@RequestMapping(value = "/hello/toJson")
 	@ResponseBody
-	// @SessionLookUp
 	public String sayHelloService() {
 		return "Hello";
 	}
 	
-	@RequestMapping(value = "/hello", method = RequestMethod.GET)
+	@RequestMapping(value = "/hello", method = RequestMethod.POST)
 	@ResponseBody
-	protected ModelAndView sayHello(HttpServletRequest request,
-		HttpServletResponse response) throws Exception {
- 
-		ModelAndView model = new ModelAndView("sayHello");
-		model.addObject("msg", "hello world");
- 
-		return model;
+	protected String sayHello () {
+		return "Fuck";
 	}
 }
