@@ -36,7 +36,7 @@ public class AssUser {
 	private int m_isAdmin;
 
 	@Column
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name="assgroup_assuser", joinColumns={@JoinColumn(name="assuser_m_id")}, inverseJoinColumns={@JoinColumn(name="assgroup_m_id")})
 	private List<AssGroup> m_groups;
 

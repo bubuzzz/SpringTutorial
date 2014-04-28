@@ -1,8 +1,5 @@
 package com.fpt.springtraining.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ApplicationController {
 	
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public ModelAndView index () {
+		return new ModelAndView("index");
+	}
+	
 	/**
 	 * Return the hello string with the root web context
 	 * 	
@@ -27,11 +29,5 @@ public class ApplicationController {
 	@ResponseBody
 	public String sayHelloService() {
 		return "Hello";
-	}
-	
-	@RequestMapping(value = "/hello", method = RequestMethod.POST)
-	@ResponseBody
-	protected String sayHello () {
-		return "Fuck";
-	}
+	}	
 }

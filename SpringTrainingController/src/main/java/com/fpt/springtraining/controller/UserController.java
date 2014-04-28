@@ -5,16 +5,16 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.hibernate.usertype.UserType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fpt.springtraining.config.Routes;
 import com.fpt.springtraining.constants.GroupType;
 import com.fpt.springtraining.data.entities.AssGroup;
@@ -28,6 +28,8 @@ import com.fpt.springtraining.logic.aspects.SessionLookUp;
 import com.fpt.springtraining.logic.service.IGroupService;
 import com.fpt.springtraining.logic.service.IUserService;
 
+
+
 /**
  * Control all the URL relating to user
  * 
@@ -35,6 +37,7 @@ import com.fpt.springtraining.logic.service.IUserService;
  *
  */
 @Controller
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class UserController {
 
 	@Autowired
@@ -194,7 +197,7 @@ public class UserController {
 	}
 	
 	/**
-	 * Create Group 
+	 * 	Create Group 
 	 * 
 	 * @param groupName
 	 * @param groupType
@@ -231,15 +234,30 @@ public class UserController {
 	 * @param session
 	 * @return
 	 */
-	@RequestMapping(value = Routes.IUser.LIST_DEVS_SERVICE, method = RequestMethod.POST)
+	@RequestMapping(value = Routes.IUser.LIST_DEVS_SERVICE, method = RequestMethod.GET)
 	@ResponseBody
 	@LoginLookup
 	public List<AssUser> displayDevsThroughRest(
 			@RequestParam String username, 
 			@RequestParam String password, 
 			@RequestParam String groupType
-	) {
-		return m_userService.displayUsers(groupType);
+		) {
+		
+		List<AssUser> results =  m_userService.displayUsers(groupType);
+		
+		return results;
+	}
+	
+	@RequestMapping(value = "/tmp/add", method = RequestMethod.GET)
+	@ResponseBody
+	@LoginLookup
+	@Transactional
+	public String createTmp() {
+		for (int i = 0; i < 100; i ++) {
+			createUser("user" + i, "1234578", true, new String[] {"dev1"}, new String [] {GroupType.DEVELOPER.getValue()});
+		}
+	
+		return "done";
 	}
 	
 	/**
@@ -251,7 +269,7 @@ public class UserController {
 	 */
 	@RequestMapping(value = Routes.IUser.LIST_USER, method = RequestMethod.GET)
 	@ResponseBody
-	@SessionLookUp
+	// @SessionLookUp
 	public List<AssUser> displayUsers(HttpSession session, String groupType) {
 		return m_userService.displayUsers(groupType);
 	}

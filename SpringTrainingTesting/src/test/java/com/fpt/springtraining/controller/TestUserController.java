@@ -39,7 +39,7 @@ import com.fpt.springtraining.logic.serviceimpl.UserServiceImpl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-// @TransactionConfiguration(transactionManager="transactionManager", defaultRollback=false)
+@TransactionConfiguration(transactionManager="transactionManager", defaultRollback=false)
 @Transactional
 @ContextConfiguration(classes = {
 	AppConfig.class,

@@ -23,11 +23,11 @@ public class AppBootstrapper implements ApplicationListener<ContextRefreshedEven
 	AssUser admin = new AssUser();
 	AssUser oldAdmin = m_user.findById(admin.getId());
 	
-	if (oldAdmin == null) {
+	/*if (oldAdmin == null) {
 	  admin.setUsername("bubuzzz");
 	  admin.setPassword("12345678");
 	  admin.setAdmin(1);
 	  m_user.save(admin);
-	}
+	}*/
   }
 }

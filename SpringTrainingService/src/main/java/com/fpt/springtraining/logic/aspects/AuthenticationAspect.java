@@ -56,9 +56,9 @@ public class AuthenticationAspect {
    		AssUser user = userService.findByUsername(username);
         System.out.println("============== Password ===============" + password);
         
-        if (!user.getPassword().equals(password)) {
-        	throw new FailAuthenticationException();
-        }
+//        if (!user.getPassword().equals(password)) {
+//        	throw new FailAuthenticationException();
+//        }
     
     }
 	
