@@ -27,7 +27,7 @@ Cobertura installation
 				<sonar.jdbc.username>sonar</sonar.jdbc.username>
 				<sonar.jdbc.password>sonar-12345</sonar.jdbc.password>
 
-        <!-- Cobertura  -->
+        			<!-- Cobertura  -->
 				<sonar.junit.reportsPath>target/surefire-reports</sonar.junit.reportsPath>
 				<sonar.cobertura.reportPath>target/site/cobertura/coverage.xml</sonar.cobertura.reportPath>
 				<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
