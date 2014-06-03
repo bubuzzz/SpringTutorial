@@ -38,3 +38,9 @@ Cobertura installation
 	</profiles>
 </settings>
 ```
+
+3. Use this comment to generate the Cobertura report and attach it to Sonar server (start your server if you haven't done that)
+
+```
+mvn clean install -Dmaven.test.skip=true && mvn cobertura:cobertura -Dcobertura.report.format=xml && mvn -s settings.xml sonar:sonar
+```
