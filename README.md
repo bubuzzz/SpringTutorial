@@ -10,6 +10,7 @@ Cobertura installation
 
 2. Put a "settings.xml" file in the root project in order to manage the sonar settings (Change your database settings to match with your sonar configuration)
 
+```xml
 <settings>
 	<profiles>
 		<profile>
@@ -36,4 +37,4 @@ Cobertura installation
 		</profile>
 	</profiles>
 </settings>
-
+```
